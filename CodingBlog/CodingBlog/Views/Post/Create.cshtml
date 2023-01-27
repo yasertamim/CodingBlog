@@ -1,0 +1,30 @@
+﻿@model Post
+
+
+
+<!--This view displays the form for create new post-->
+
+<form method="post" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input type="text" class="form-control" asp-for="Title" placeholder="Title">
+    </div>
+    <div class="form-group">
+        <label asp-for="Language">Select language</label>
+        <select class="form-control" asp-for="Language">
+            <option>Csharp</option>
+            <option>Python</option>
+            <option>Java</option>
+            <option>Kotlin</option>
+            <option>C</option>
+            <option>Cplus</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Content">Add the content</label>
+        <textarea class="form-control" asp-for="Content"  rows="20"></textarea>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-secondary">Submit</button>
+</form>

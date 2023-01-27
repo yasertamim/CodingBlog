@@ -1,0 +1,28 @@
+﻿@model Post
+
+
+<!--This view where the user can delete the post-->
+<article class="forecast">
+    <h1 class="child">@Model.Title</h1>
+    <article class="day-forecast">
+
+        <div class="multiline">
+            <div class="child">
+                @Model.Content
+            </div>
+        </div>
+
+    </article>
+
+</article>
+<form asp-action="Delete" method="post"> 
+    <input type="hidden" asp-route-id="@Model.Id" />
+    <button type="submit" class="btn btn-outline-danger">Delete</button>
+</form>
+
+
+
+
+
+
+

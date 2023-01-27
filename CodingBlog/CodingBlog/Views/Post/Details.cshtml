@@ -1,0 +1,65 @@
+﻿
+@model PostViewModel
+
+
+<!--This view displays the content of each post including its comments-->
+
+
+<div class="post">
+    <h2>@Model.Post.Title</h2>
+    <div class="post-meta">
+        <span class="post-date">@Model.Post.Published.ToShortDateString()</span>
+        <span class="post-author">@Model.Post.Author</span>
+    </div>
+    <div class="post-content">
+        @Html.Raw(Model.Post.Content)
+    </div>
+</div>
+
+
+
+
+
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <form method="post" asp-action="Details">
+            
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input type="text" class="form-control" name="text" placeholder="Add comment">
+                <input type="hidden" name="postId" value="@Model.Post.Id">
+             
+            </div>
+
+            <br/>
+          
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+               @foreach(var comment in Model.Comments){
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p>@comment.Text</p>
+
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <img src="/media/user (1).png"  width="25"
+                                     height="25" />
+                                    <p class="small mb-0 ms-2">@comment.Author</p>
+                                </div>
+                                <div class="d-flex flex-row align-items-center">
+                                    
+                                    <p class="small text-muted mb-0">@comment.CommentDate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               }
+
+       
+            </div>
+        </div>
+    </div>
+</div>

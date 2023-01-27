@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Post>
+
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <h1 class="fw-light">Share your knowledge here</h1>
+                <p class="lead">no matter if you are senior or junior</p>
+                <a asp-controller="Post" asp-action="Create" class="btn btn-secondary">Create new post</a>
+
+        </div>
+    </div>
+</header>
+
+<div class="topnav">
+   
+
+
+</div>
+<br />
+<br />
+
+<div style="padding-left:16px">
+    <h2>All Posts</h2>
+     <form class="d-flex" method="get" asp-action="Index">
+        <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search" name="search">
+        <button class="btn btn-secondary" type="submit">Search</button>
+      </form>
+   
+</div>
+<br />
+
+
+<div class="row">
+    @foreach(var post in Model){
+        <div class="card" style="width: 18rem;">
+            <img src="/media/code.png" class="card-img-top" alt="...">
+            
+            <div>
+                <div class="card-body">
+                    <h5 class="card-title">@post.Title</h5>
+                    <h6 class="card-title">@post.Language</h6>
+                    <p class="card-text">@post.Content.Substring(0,50)</p>
+                    <a asp-area="" asp-controller="Post" asp-action="Details" asp-route-id="@post.Id" class="btn btn-secondary">Show</a>
+                    <br/>
+                    <br/>
+                    <p>@post.Published.ToString("dd.MM.yyyy HH:mm")</p>
+                      
+                </div>
+              
+
+            </div>
+        </div>
+        <br />
+    }
+
+</div>
